@@ -25,7 +25,12 @@
 	    (SELECT way,
 	    "addr:housenumber" AS housenumber
 	    FROM planet_osm_point
-       WHERE "addr:housenumber" is not null
+	    WHERE "addr:housenumber" is not null
+	    UNION
+	    SELECT way,
+	    "addr:housenumber" AS housenumber
+	    FROM planet_osm_polygon
+	    WHERE "addr:housenumber" is not null
      ) AS way
     </Parameter>
     <Parameter name="geometry_field">way</Parameter>
